@@ -30,3 +30,17 @@
 *.exe
 *.out
 *.app
+
+#Visaul studio temp
+.history/*
+*.o
+*.a
+*.gcda
+*.gcno
+*.info
+*.pyc
+*.out
+*.log
+build/
+.vscode
+*.code-workspace
