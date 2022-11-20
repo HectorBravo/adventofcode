@@ -12,3 +12,8 @@ def read_input():
     with open(input_file) as f:
         contents = f.read().splitlines()
     return contents
+
+def print_result(result, expected_result = None):
+    print('Result is:', result)
+    if expected_result:
+        assert(result == expected_result)

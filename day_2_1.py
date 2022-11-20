@@ -24,5 +24,4 @@ def process_contents(contents):
 if __name__ == "__main__":
     contents = common.read_input()
     result = process_contents(contents)
-    print('Result is:', result)
-    assert(result == 2036120)
+    common.print_result(result, 2036120)
