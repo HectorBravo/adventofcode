@@ -1,12 +1,7 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 1 excercise 1 https://adventofcode.com/2021/day/1
 
-input_file = 'day_1_1_input.txt'
-
-def read_input(input_file):
-    with open(input_file) as f:
-        contents = f.read().splitlines()
-    return contents
+import adv2021_common as common
 
 def process_contents(contents):
     # print(contents)
@@ -19,6 +14,7 @@ def process_contents(contents):
     return result
 
 if __name__ == "__main__":
-    contents = read_input(input_file)
+    contents = common.read_input()
     result = process_contents(contents)
     print('Result is:', result)
+    assert(result == 1342)
