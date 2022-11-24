@@ -1,5 +1,5 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
-# Code for Day 4 excercise 1 https://adventofcode.com/2021/day/1
+# Code for Day 4 excercise 1 https://adventofcode.com/2021/day/4
 
 import adv2021_common as common
 
