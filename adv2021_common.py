@@ -17,3 +17,6 @@ def print_result(result, expected_result = None):
     print('Result is:', result)
     if expected_result:
         assert(result == expected_result)
+
+def str_list_to_int_lst(str_list):
+    return list(map(int, str_list))
