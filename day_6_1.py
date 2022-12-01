@@ -17,6 +17,7 @@ def calc_len_after_days(fish_list, days):
                 new_ones.append(8)
         if new_ones:
             fish_list += new_ones
+        print('day:', day, 'fish_list:', fish_list)
     return len(fish_list)
 
 def process_solution(contents):

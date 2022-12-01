@@ -5,7 +5,7 @@ import sys
 import os
 
 script_name = os.path.basename(sys.argv[0])
-input_file = script_name.split('.')[0] + '_input.txt'
+input_file = script_name.split('.')[0][:-2] + '_input.txt'
 
 def read_input():
     print('Input file:', input_file)
