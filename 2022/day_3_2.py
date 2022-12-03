@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
-# Code for Day 3 excercise 2 https://adventofcode.com/2022/day/2
+# Code for Day 3 excercise 2 https://adventofcode.com/2022/day/3
 
-from importlib.metadata import packages_distributions
 import adv2022_common as common
 import time
 import day_3_1
