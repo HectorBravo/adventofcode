@@ -10,17 +10,14 @@ def process_contents(contents):
     depth = 0
     aim = 0
     for pair in contents:
-        splitted = pair.split()
-        direction = splitted[0].lower()
-        value = int(splitted[1])
+        direction, value = pair.split()
+        value = int(value)
         if direction == 'forward':
             horizontal_position += value
             depth += (aim * value)
         elif direction == 'down':
-            # depth += value
             aim += value
         elif direction == 'up':
-            # depth -= value
             aim -= value
     result = horizontal_position * depth
     return result

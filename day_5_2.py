@@ -4,7 +4,6 @@
 import adv2021_common as common
 import day_5_1
 import numpy as np
-import time
 
 def gen_coord_dict(coordinate_list):
     coords_dict = {}
@@ -18,6 +17,7 @@ def gen_coord_dict(coordinate_list):
                 coords_dict[point] = 1
     return coords_dict
 
+@common.elapsed_time_factory()
 def process_solution(contents):
     # print('Contents:', contents)
     coordinates_list = day_5_1.get_coordinates(contents)
@@ -29,6 +29,7 @@ def process_solution(contents):
     result = day_5_1.count_dangerous_areas(vents_matrix, danger_rating)
     return result
 
+@common.elapsed_time_factory()
 def process_solution2(contents):
     # print('Contents:', contents)
     coordinates_list = day_5_1.get_coordinates(contents)
@@ -40,9 +41,7 @@ def process_solution2(contents):
 
 if __name__ == "__main__":
     contents = common.read_input()
-    start_time = time.time()
     result = process_solution(contents)
     common.print_result(result, 15463)
     result = process_solution2(contents)
     common.print_result(result, 15463)
-    print("--- %s seconds ---" % (time.time() - start_time))

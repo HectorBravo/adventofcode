@@ -3,14 +3,20 @@
 
 import sys
 import os
+import time
 
 script_name = os.path.basename(sys.argv[0])
 input_file = script_name.split('.')[0][:-2] + '_input.txt'
 
-def read_input():
+def read_input(data_type = 'str', separator = ' '):
     print('Input file:', input_file)
-    with open(input_file) as f:
-        contents = f.read().splitlines()
+    with open(input_file, "r") as f:
+        if data_type == 'int':
+            contents = list(map(int, f))
+        elif data_type == 'int_list':
+            contents = list(map(int, f.read().split(separator)))
+        else:
+            contents = f.read().splitlines()
     return tuple(contents)
 
 def print_result(result, expected_result = None):
@@ -46,3 +52,17 @@ def gen_point_list(vector):
 
     point_list = [(x0 + step * direction_x, y0 + step *direction_y) for step in range(num_steps)]
     return tuple(point_list)
+
+def elapsed_time_factory(print_args = False):
+    def elapsed_time_decorator(func):
+        def wrapper(*args, **kwargs):
+            start_time = time.time()
+            result = func(*args, **kwargs)
+            end_time = time.time()
+            if print_args:
+                print('Time consumed by function "{}({})" was {} seconds'.format(func.__name__, args, end_time - start_time))
+            else:
+                print('Time consumed by function "{}" was {} seconds'.format(func.__name__, end_time - start_time))
+            return result
+        return wrapper
+    return elapsed_time_decorator

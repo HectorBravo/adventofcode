@@ -8,12 +8,18 @@ def process_contents(contents):
     result = 0
     previous = contents[0]
     for current in contents:
-        if int(current) > int(previous):
+        if current > previous:
             result += 1
         previous = current
     return result
 
+def process_contents2(contents):
+    # print(contents)
+    return len([contents[i:i+2] for i in range(0, len(contents) - 1) if contents[i+1] > contents[i]])
+
 if __name__ == "__main__":
-    contents = common.read_input()
+    contents = common.read_input('int')
     result = process_contents(contents)
+    common.print_result(result, 1342)
+    result = process_contents2(contents)
     common.print_result(result, 1342)

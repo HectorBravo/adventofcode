@@ -37,7 +37,21 @@ def process_contents(contents):
     result = gamma * epsilon
     return result
 
+def process_contents2(contents):
+    # print(contents)
+    gamma = []
+    epsilon = []
+    for bit in range(len(contents[0])):
+        ones = len([i[bit] for i in contents if i[bit] == '1'])
+        zeroes = len([i[bit] for i in contents if i[bit] == '0'])
+        gamma += ['1' if ones > zeroes else '0']
+        epsilon += ['0' if ones > zeroes else '1']
+    result = int("".join(gamma), 2) * int("".join(epsilon), 2)
+    return result
+
 if __name__ == "__main__":
     contents = common.read_input()
     result = process_contents(contents)
+    common.print_result(result, 1307354)
+    result = process_contents2(contents)
     common.print_result(result, 1307354)

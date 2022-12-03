@@ -9,9 +9,8 @@ def process_contents(contents):
     x = 0
     y = 0
     for pair in contents:
-        splitted = pair.split()
-        direction = splitted[0].lower()
-        value = int(splitted[1])
+        direction, value = pair.split()
+        value = int(value)
         if direction == 'forward':
             x += value
         elif direction == 'down':
