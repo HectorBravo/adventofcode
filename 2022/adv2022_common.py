@@ -44,7 +44,5 @@ def gen_point_list(vector):
     max_steps_y = abs(y0 - y1) + 1
     num_steps = max(max_steps_x, max_steps_y)
 
-    point_list = []
-    for step in range(num_steps):
-        point_list.append((x0 + step * direction_x, y0 + step *direction_y))
+    point_list = [(x0 + step * direction_x, y0 + step *direction_y) for step in range(num_steps)]
     return point_list

@@ -14,15 +14,15 @@ def get_max_calories_list(current_list, calories):
 def get_max_calories(calories_array):
     max_calories_list = []
     current_calories = 0
-    for line in range(len(calories_array)):
-        if calories_array[line] == '':
+    for line, calories in enumerate(calories_array):
+        if calories == '':
             max_calories_list = get_max_calories_list(max_calories_list, current_calories)
             current_calories = 0
         elif line == (len(calories_array) - 1):
-            current_calories += int(calories_array[line])
+            current_calories += int(calories)
             max_calories_list = get_max_calories_list(max_calories_list, current_calories)
         else:
-            current_calories += int(calories_array[line])
+            current_calories += int(calories)
     return sum(max_calories_list)
 
 def process_solution(contents):
