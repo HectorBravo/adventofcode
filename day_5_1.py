@@ -31,6 +31,7 @@ def count_dangerous_areas(array, rating):
     filter_array = (array >= rating)
     return len(array[filter_array])
 
+@common.elapsed_time_factory()
 def process_solution(contents):
     # print('Contents:', contents)
     coordinates_list = get_coordinates(contents)

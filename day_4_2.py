@@ -4,6 +4,7 @@
 import adv2021_common as common
 import day_4_1 as day_4_1
 
+@common.elapsed_time_factory()
 def process_contents(contents):
     # print('Contents:', contents)
     winning_combination = contents[0]

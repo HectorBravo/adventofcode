@@ -21,6 +21,7 @@ def calc_epsilon(zeroes, ones):
             value += '0'
     return int(value, 2)
 
+@common.elapsed_time_factory()
 def process_contents(contents):
     # print(contents)
     zeroes = [0] * len(contents[0])
@@ -37,6 +38,7 @@ def process_contents(contents):
     result = gamma * epsilon
     return result
 
+@common.elapsed_time_factory()
 def process_contents2(contents):
     # print(contents)
     gamma = []

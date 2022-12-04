@@ -3,6 +3,7 @@
 
 import adv2021_common as common
 
+@common.elapsed_time_factory()
 def process_contents(contents):
     # print(contents)
     result = 0

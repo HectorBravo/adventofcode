@@ -2,7 +2,6 @@
 # Code for Day 7 excercise 1 https://adventofcode.com/2021/day/7
 
 import adv2021_common as common
-import time
 
 def calc_fuel(list):
     min_item = min(list)
@@ -18,6 +17,7 @@ def calc_fuel(list):
             min_count = count
     return min_count
 
+@common.elapsed_time_factory()
 def process_solution(contents):
     # print('Contents:', contents)
     crab_list = common.str_list_to_int_lst(contents[0].split(','))
@@ -25,7 +25,5 @@ def process_solution(contents):
 
 if __name__ == "__main__":
     contents = common.read_input()
-    start_time = time.time()
     result = process_solution(contents)
     common.print_result(result, 329389)
-    print("--- %s seconds ---" % (time.time() - start_time))

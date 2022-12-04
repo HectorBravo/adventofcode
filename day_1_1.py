@@ -3,6 +3,7 @@
 
 import adv2021_common as common
 
+@common.elapsed_time_factory()
 def process_contents(contents):
     # print(contents)
     result = 0
@@ -13,6 +14,7 @@ def process_contents(contents):
         previous = current
     return result
 
+@common.elapsed_time_factory()
 def process_contents2(contents):
     # print(contents)
     return len([contents[i:i+2] for i in range(0, len(contents) - 1) if contents[i+1] > contents[i]])

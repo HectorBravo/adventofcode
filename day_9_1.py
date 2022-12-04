@@ -3,7 +3,6 @@
 
 import adv2021_common as common
 import numpy as np
-import time
 
 def sum_risk_level(array):
     risk_level = 0
@@ -33,7 +32,7 @@ def sum_risk_level(array):
                 # print('found:', x, y)
     return risk_level
 
-
+@common.elapsed_time_factory()
 def process_solution(contents):
     # print('Contents:', contents)
     lava_matrix = np.array(contents)
@@ -41,7 +40,5 @@ def process_solution(contents):
 
 if __name__ == "__main__":
     contents = common.read_input()
-    start_time = time.time()
     result = process_solution(contents)
     common.print_result(result, 506)
-    print("--- %s seconds ---" % (time.time() - start_time))

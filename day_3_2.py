@@ -40,6 +40,7 @@ def calc_CO2_rating(contents):
         CO2_rating = filter_values(CO2_rating, bit, least_common_value)
     return int(CO2_rating[0], 2)
 
+@common.elapsed_time_factory()
 def process_contents(contents):
     # print('Contents:', contents)
     oxygen_rating = calc_oxigen_rating(contents)

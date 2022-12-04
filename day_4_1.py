@@ -90,6 +90,7 @@ def get_sum_of_unmarked_nums(winner_board):
     unmarked_sum = sum(list(int(item) for item in unmarked_dict))
     return unmarked_sum
 
+@common.elapsed_time_factory()
 def process_contents(contents):
     # print('Contents:', contents)
     winning_combination = contents[0]

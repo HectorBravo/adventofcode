@@ -3,6 +3,7 @@
 
 import adv2021_common as common
 
+@common.elapsed_time_factory()
 def process_contents(contents):
     # print(contents)
     result = 0
@@ -14,6 +15,7 @@ def process_contents(contents):
         previous_sum = current_sum
     return result
 
+@common.elapsed_time_factory()
 def process_contents2(contents):
     # print(contents)
     return len([contents[i:i+4] for i in range(0, len(contents) - 1) if sum(contents[i+1:i+4]) > sum(contents[i:i+3])])
