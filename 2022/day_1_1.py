@@ -2,7 +2,6 @@
 # Code for Day 1 excercise 1 https://adventofcode.com/2022/day/1
 
 import adv2022_common as common
-import time
 import numpy as np
 
 def get_max_calories(calories_array):
@@ -21,6 +20,7 @@ def get_max_calories(calories_array):
             current_calories += int(calories)
     return max_calories
 
+@common.elapsed_time_factory()
 def process_solution(contents):
     # print('Contents:', contents)
     calories_array = np.array(contents)
@@ -28,7 +28,5 @@ def process_solution(contents):
 
 if __name__ == "__main__":
     contents = common.read_input()
-    start_time = time.time()
     result = process_solution(contents)
     common.print_result(result, 71502)
-    print("--- %s seconds ---" % (time.time() - start_time))

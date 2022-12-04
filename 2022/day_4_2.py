@@ -13,7 +13,7 @@ def process_solution(contents):
         pair2 = list(map(int, pair[1].split('-')))
         set1 = set(range(pair1[0], pair1[1] + 1))
         set2 = set(range(pair2[0], pair2[1] + 1))
-        if not set1.isdisjoint(set2):
+        if len(set1 & set2) > 0:
             count += 1
     return count
 

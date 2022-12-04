@@ -4,6 +4,8 @@
 import sys
 import os
 import time
+from os import path
+import shutil
 
 script_name = os.path.basename(sys.argv[0])
 input_file = script_name.split('.')[0][:-2] + '_input.txt'
@@ -19,10 +21,32 @@ def read_input(data_type = 'str', separator = ' '):
             contents = f.read().splitlines()
     return tuple(contents)
 
+def gen_next_files():
+    script_name = os.path.basename(sys.argv[0])
+    current_file = script_name.split('.')[0].split('_')
+    new_day_file = [*current_file]
+    new_input_file = []
+    if current_file[2] == '2':
+        new_day_file[1] = str(int(new_day_file[1]) + 1)
+        new_day_file[2] = '1.py'
+        new_input_file = [*new_day_file][0:2] + ['input.txt']
+    else:
+        new_day_file[2] = '2.py'
+    new_day_file = '_'.join(new_day_file)
+    new_input_file = '_'.join(new_input_file)
+    if not path.exists(new_day_file):
+        print('Created new day file', new_day_file)
+        shutil.copy(script_name, new_day_file)
+    if new_input_file and (not path.exists(new_input_file)):
+        print('Created new input file', new_input_file)
+        with open(new_input_file, 'w') as f:
+            pass
+
 def print_result(result, expected_result = None):
     print('Result is:', result)
     if expected_result:
         assert(result == expected_result)
+        gen_next_files()
 
 def str_list_to_int_lst(str_list):
     return list(map(int, str_list))

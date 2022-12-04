@@ -3,6 +3,7 @@
 
 import adv2022_common as common
 
+@common.elapsed_time_factory()
 def process_solution(contents):
     # print('Contents:', contents)
     pairs = [pair.split(',') for pair in contents]
@@ -12,7 +13,7 @@ def process_solution(contents):
         pair2 = list(map(int, pair[1].split('-')))
         set1 = set(range(pair1[0], pair1[1] + 1))
         set2 = set(range(pair2[0], pair2[1] + 1))
-        if set1.issubset(set2) or set2.issubset(set1):
+        if len(set1 - set2) == 0 or len(set2 - set1) == 0:
             count += 1
     return count
 
