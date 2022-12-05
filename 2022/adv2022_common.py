@@ -6,12 +6,13 @@ import os
 import time
 from os import path
 import shutil
+from colorama import Fore, Back, Style
 
 script_name = os.path.basename(sys.argv[0])
 input_file = script_name.split('.')[0][:-2] + '_input.txt'
 
 def read_input(data_type = 'str', separator = ' '):
-    print('Input file:', input_file)
+    print(Fore.GREEN + 'Input file:' + Style.BRIGHT, input_file, Style.RESET_ALL)
     with open(input_file, "r") as f:
         if data_type == 'int':
             contents = list(map(int, f))
@@ -35,15 +36,15 @@ def gen_next_files():
     new_day_file = '_'.join(new_day_file)
     new_input_file = '_'.join(new_input_file)
     if not path.exists(new_day_file):
-        print('Created new day file', new_day_file)
+        print(Fore.RED + 'Created new day file' + Style.BRIGHT, new_day_file, Style.RESET_ALL)
         shutil.copy(script_name, new_day_file)
     if new_input_file and (not path.exists(new_input_file)):
-        print('Created new input file', new_input_file)
+        print(Fore.RED + 'Created new input file' + Style.BRIGHT, new_input_file, Style.RESET_ALL)
         with open(new_input_file, 'w') as f:
             pass
 
 def print_result(result, expected_result = None):
-    print('Result is:', result)
+    print(Fore.GREEN + 'Result is:' + Style.BRIGHT, result, Style.RESET_ALL)
     if expected_result:
         assert(result == expected_result)
         gen_next_files()
@@ -84,9 +85,9 @@ def elapsed_time_factory(print_args = False):
             result = func(*args, **kwargs)
             end_time = time.time()
             if print_args:
-                print('Time consumed by function "{}({})" was {} seconds'.format(func.__name__, args, end_time - start_time))
+                print('Time consumed by function ' + Fore.CYAN + func.__name__ + ' (' + Fore.WHITE + str(args) + Fore.CYAN + ')' + Style.RESET_ALL + ' was ' + Style.BRIGHT + str(end_time - start_time) + Style.RESET_ALL + ' seconds')
             else:
-                print('Time consumed by function "{}" was {} seconds'.format(func.__name__, end_time - start_time))
+                print('Time consumed by function ' + Fore.CYAN + func.__name__ + Style.RESET_ALL + ' was ' + Style.BRIGHT + str(end_time - start_time) + Style.RESET_ALL + ' seconds')
             return result
         return wrapper
     return elapsed_time_decorator
