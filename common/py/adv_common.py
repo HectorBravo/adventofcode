@@ -4,16 +4,16 @@
 import sys
 import os
 import time
-from os import path
 import shutil
 from colorama import Fore, Back, Style
 
 script_name = os.path.basename(sys.argv[0])
+dir_name = os.path.dirname(sys.argv[0])
 input_file = script_name.split('.')[0][:-2] + '_input.txt'
 
 def read_input(data_type = 'str', separator = ' '):
     print(Fore.GREEN + 'Input file:' + Style.BRIGHT, input_file, Style.RESET_ALL)
-    with open(input_file, "r") as f:
+    with open(dir_name + '\\' + input_file, "r") as f:
         if data_type == 'int':
             contents = list(map(int, f))
         elif data_type == 'int_list':
@@ -35,12 +35,12 @@ def gen_next_files():
         new_day_file[2] = '2.py'
     new_day_file = '_'.join(new_day_file)
     new_input_file = '_'.join(new_input_file)
-    if not path.exists(new_day_file):
-        print(Fore.RED + 'Created new day file' + Style.BRIGHT, new_day_file, Style.RESET_ALL)
-        shutil.copy(script_name, new_day_file)
-    if new_input_file and (not path.exists(new_input_file)):
-        print(Fore.RED + 'Created new input file' + Style.BRIGHT, new_input_file, Style.RESET_ALL)
-        with open(new_input_file, 'w') as f:
+    if not os.path.exists(dir_name + '\\' + new_day_file):
+        print(Fore.RED + 'Created new day file' + Style.BRIGHT, dir_name + '\\' + new_day_file, Style.RESET_ALL)
+        shutil.copy(dir_name + '\\' + script_name, dir_name + '\\' + new_day_file)
+    if new_input_file and (not os.path.exists(dir_name + '\\' + new_input_file)):
+        print(Fore.RED + 'Created new input file' + Style.BRIGHT, dir_name + '\\' + new_input_file, Style.RESET_ALL)
+        with open(dir_name + '\\' + new_input_file, 'w') as f:
             pass
 
 def print_result(result, expected_result = None):

@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 5 excercise 2 https://adventofcode.com/2021/day/5
 
-import adv2021_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 import day_5_1
 import numpy as np
 

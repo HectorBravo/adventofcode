@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 1 excercise 2 https://adventofcode.com/2021/day/1#part2
 
-import adv2021_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 
 @common.elapsed_time_factory()
 def process_contents(contents):

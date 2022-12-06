@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 6 excercise 1 https://adventofcode.com/2021/day/6
 
-import adv2021_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 
 DAYS_TO_SIMULATE = 80
 

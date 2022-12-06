@@ -1,18 +1,24 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
-# Code for Day 7 excercise 1 https://adventofcode.com/2021/day/7
+# Code for Day 7 excercise 2 https://adventofcode.com/2021/day/7
 
-import adv2021_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 
 def calc_fuel(list):
     min_item = min(list)
     max_item = max(list)
-    min_count = max_item*len(list)
+    min_count = ((max_item - min_item)//2*(max_item - min_item + 1)) * len(list)
     for horizontal_position in range(max_item, min_item, -1):
         count = 0
         for item in list:
             if count > min_count:
                 break
-            count += abs(horizontal_position - item)
+            distance = abs(horizontal_position - item)
+            if (distance + 1) % 2 == 0:
+                count += (((distance + 1) // 2) * (distance))
+            else:
+                count += ((distance // 2) * (distance + 1))
         if count < min_count:
             min_count = count
     return min_count
@@ -26,4 +32,4 @@ def process_solution(contents):
 if __name__ == "__main__":
     contents = common.read_input()
     result = process_solution(contents)
-    common.print_result(result, 329389)
+    common.print_result(result, 86397080)

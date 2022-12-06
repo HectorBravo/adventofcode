@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 3 excercise 1 https://adventofcode.com/2021/day/3
 
-import adv2021_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 
 def filter_values(input, bit, value):
     return list(filter(lambda x : x[bit] == str(value), input))
