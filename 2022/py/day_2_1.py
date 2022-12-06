@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 2 excercise 1 https://adventofcode.com/2022/day/1
 
-import adv2022_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 
 shape_score = {'X': 1, 'Y': 2, 'Z': 3}
 outcome_score = {   ('B X'): 0, ('C Y'): 0, ('A Z'): 0,

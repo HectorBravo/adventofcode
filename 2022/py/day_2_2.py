@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 2 excercise 1 https://adventofcode.com/2022/day/1
 
-import adv2022_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 
 outcome_score = {   ('B X'): (0, 1), ('C Y'): (3, 3), ('A Z'): (6, 2),
                                     ('A X'): (0, 3), ('B Y'): (3, 2), ('C Z'): (6, 1),

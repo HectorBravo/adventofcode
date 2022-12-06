@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 6 excercise 1 https://adventofcode.com/2022/day/6
 
-import adv2022_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 
 def get_first_diff_sequence(input, characters):
     for i in range(len(input)):

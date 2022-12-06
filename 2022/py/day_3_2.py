@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 3 excercise 2 https://adventofcode.com/2022/day/3
 
-import adv2022_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 import day_3_1
 
 @common.elapsed_time_factory()

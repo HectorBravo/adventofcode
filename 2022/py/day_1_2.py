@@ -1,7 +1,9 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 1 excercise 2 https://adventofcode.com/2022/day/1
 
-import adv2022_common as common
+import sys
+sys.path.append('../../common/py')
+import adv_common as common
 import numpy as np
 
 def get_max_calories_list(current_list, calories):
