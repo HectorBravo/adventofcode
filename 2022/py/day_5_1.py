@@ -12,7 +12,7 @@ def split_input(input):
 
     for line in input:
         if blank_line_found:
-            directions += [tuple([int(x) for x in line.split(' ') if x.isdigit()])]
+            directions += [tuple([int(x) for x in line.split(' ') if x.lstrip("-").isnumeric()])]
         elif line == '':
             blank_line_found = True
         else:
