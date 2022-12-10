@@ -18,6 +18,9 @@ def read_input(data_type = 'str', separator = ' '):
             contents = list(map(int, f))
         elif data_type == 'int_list':
             contents = list(map(int, f.read().split(separator)))
+        elif data_type == 'char_list':
+            lines = f.read().splitlines()
+            contents = list([[c for c in lines[i]] for i in range(len(lines))])
         else:
             contents = f.read().splitlines()
     return tuple(contents)
