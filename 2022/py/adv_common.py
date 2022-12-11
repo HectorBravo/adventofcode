@@ -1,5 +1,5 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
-# Common functions for https://adventofcode.com/2021/
+# Common functions for https://adventofcode.com
 
 import sys
 import os
