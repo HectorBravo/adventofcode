@@ -2,7 +2,6 @@
 # Code for Day 5 excercise 1 https://adventofcode.com/2022/day/5
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 
 def split_input(input):

@@ -2,7 +2,6 @@
 # Code for Day 6 excercise 1 https://adventofcode.com/2022/day/6
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 
 def get_first_diff_sequence(input, characters):

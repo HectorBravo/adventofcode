@@ -2,7 +2,6 @@
 # Code for Day 5 excercise 2 https://adventofcode.com/2022/day/5
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 import day_5_1
 

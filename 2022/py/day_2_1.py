@@ -2,7 +2,6 @@
 # Code for Day 2 excercise 1 https://adventofcode.com/2022/day/1
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 
 shape_score = {'X': 1, 'Y': 2, 'Z': 3}

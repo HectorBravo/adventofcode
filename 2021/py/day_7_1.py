@@ -2,7 +2,6 @@
 # Code for Day 7 excercise 1 https://adventofcode.com/2021/day/7
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 
 def calc_fuel(list):

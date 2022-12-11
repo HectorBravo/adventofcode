@@ -2,7 +2,6 @@
 # Code for Day 1 excercise 1 https://adventofcode.com/2022/day/1
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 import numpy as np
 

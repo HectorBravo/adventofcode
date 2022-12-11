@@ -2,7 +2,6 @@
 # Code for Day 4 excercise 1 https://adventofcode.com/2021/day/4
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 
 BOARD_COLS = 5

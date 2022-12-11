@@ -2,7 +2,6 @@
 # Code for Day 2 excercise 2 https://adventofcode.com/2021/day/2#part2
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 
 @common.elapsed_time_factory()

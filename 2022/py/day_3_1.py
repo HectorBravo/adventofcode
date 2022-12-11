@@ -2,7 +2,6 @@
 # Code for Day 3 excercise 1 https://adventofcode.com/2022/day/3
 
 import sys
-sys.path.append('../../common/py')
 import adv_common as common
 
 def get_prio(item):
