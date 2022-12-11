@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 7 excercise 2 https://adventofcode.com/2021/day/7
 
-import sys
 import adv_common as common
 
 def calc_fuel(list):

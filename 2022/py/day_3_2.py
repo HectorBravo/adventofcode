@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 3 excercise 2 https://adventofcode.com/2022/day/3
 
-import sys
 import adv_common as common
 import day_3_1
 

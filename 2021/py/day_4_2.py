@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 4 excercise 2 https://adventofcode.com/2021/day/4
 
-import sys
 import adv_common as common
 import day_4_1 as day_4_1
 

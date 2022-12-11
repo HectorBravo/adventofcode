@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 5 excercise 1 https://adventofcode.com/2021/day/5
 
-import sys
 import adv_common as common
 import numpy as np
 

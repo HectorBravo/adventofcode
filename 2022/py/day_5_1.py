@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 5 excercise 1 https://adventofcode.com/2022/day/5
 
-import sys
 import adv_common as common
 
 def split_input(input):

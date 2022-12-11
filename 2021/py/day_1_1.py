@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 1 excercise 1 https://adventofcode.com/2021/day/1
 
-import sys
 import adv_common as common
 
 @common.elapsed_time_factory()

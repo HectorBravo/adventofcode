@@ -1,7 +1,6 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
 # Code for Day 3 excercise 1 https://adventofcode.com/2021/day/3
 
-import sys
 import adv_common as common
 
 def filter_values(input, bit, value):
