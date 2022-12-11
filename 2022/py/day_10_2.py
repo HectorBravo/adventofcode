@@ -39,4 +39,4 @@ def process_solution(contents):
 if __name__ == "__main__":
     contents = common.read_input()
     result = process_solution(contents)
-    # common.print_result(result, 12560)
+    # common.print_result(result, 0)
