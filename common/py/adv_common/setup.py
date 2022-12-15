@@ -1,4 +1,3 @@
-import sys
 from setuptools import setup, find_packages
 
 setup(
@@ -12,6 +11,6 @@ setup(
 	description='Common code for https://adventofcode.com',
 	long_description=open('README.md').read(),
 	long_description_content_type='text/markdown',
-	install_requires=[],
-	python_requires='>=3.11'
+	install_requires=['colorama'],
+	python_requires='>=3'
 )
