@@ -58,8 +58,7 @@ def gen_positions(contents, num_segments):
                 else:
                     next_segments[i] = segments[i]
                 # print_move(segments[i], next_segments[i], i)
-            for i in range(len(segments)):
-                segments[i] = next_segments[i]
+            segments = next_segments[:]
         # day_9_1.draw_positions(tail_positions)
     return tail_positions
 
