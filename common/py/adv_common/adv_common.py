@@ -94,3 +94,12 @@ def elapsed_time_factory(print_args = False):
             return result
         return wrapper
     return elapsed_time_decorator
+
+def get_neighbour_positions(position:complex, min_x_y:complex, max_x_y:complex, include_diagonals = False):
+    neighbours = {position + 1, position -1, position +1j, position -1j}
+    if include_diagonals:
+        neighbours |= {position + (1+1j), position + (-1+1j), position + (1-1j), position + (-1-1j)}
+    filtered_neigbours = set(filter(lambda number: number.real >= min_x_y.real and number.real <= max_x_y.real and
+                                                            number.imag >= min_x_y.imag and number.imag <= max_x_y.imag,
+                                                            neighbours))
+    return filtered_neigbours
