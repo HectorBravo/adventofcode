@@ -11,7 +11,7 @@ script_name = os.path.basename(sys.argv[0])
 dir_name = os.path.dirname(sys.argv[0])
 input_file = script_name.split('.')[0][:-2] + '_input.txt'
 
-def read_input(data_type = 'str', separator = ' '):
+def read_input(data_type = 'str', separator = '\n', struct_list_separator = '\n\n'):
     print(Fore.GREEN + 'Input file:' + Style.BRIGHT, input_file, Style.RESET_ALL)
     with open(dir_name + '\\' + input_file, "r") as f:
         if data_type == 'int':
@@ -20,9 +20,12 @@ def read_input(data_type = 'str', separator = ' '):
             contents = list(map(int, f.read().split(separator)))
         elif data_type == 'char_list':
             lines = f.read().splitlines()
-            contents = list([[c for c in lines[i]] for i in range(len(lines))])
+            contents = [[c for c in lines[i]] for i in range(len(lines))]
+        elif data_type == 'struct_list':
+            structs = f.read().split(struct_list_separator)
+            contents = [struct.split(separator) for struct in structs]
         else:
-            contents = f.read().splitlines()
+            contents = f.read().split(separator)
     return tuple(contents)
 
 def gen_next_files():
