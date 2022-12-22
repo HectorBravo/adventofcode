@@ -4,19 +4,16 @@
 import adv_common as common
 
 def split_input(input):
+    crate_list, direction_list = input
     directions = []
-    blank_line_found = False
-    crates = [[] for _ in range(len(input[0]) // 4 + 1)]
+    crates = [[] for _ in range(len(crate_list[0]) // 4 + 1)]
 
-    for line in input:
-        if blank_line_found:
-            directions += [tuple([int(x) for x in line.split(' ') if x.lstrip("-").isnumeric()])]
-        elif line == '':
-            blank_line_found = True
-        else:
-            for i in range(len(line) // 4 + 1):
-                if line[4*i+1: 4*i+2] != ' ':
-                    crates[i].append(line[4*i+1: 4*i+2])
+    for direction in direction_list:
+        directions += [tuple([int(x) for x in direction.split(' ') if x.lstrip("-").isnumeric()])]
+    for crate in crate_list:
+        for i in range(len(crate) // 4 + 1):
+            if crate[4*i+1: 4*i+2] != ' ':
+                crates[i].append(crate[4*i+1: 4*i+2])
     return crates, directions
 
 def move_elems(elems, src_crate, dst_crate):
@@ -36,6 +33,6 @@ def process_solution(contents):
     return "".join([i[0] for i in crates])
 
 if __name__ == "__main__":
-    contents = common.read_input()
+    contents = common.read_input(data_type = 'struct_list')
     result = process_solution(contents)
     common.print_result(result, 'RTGWZTHLD')

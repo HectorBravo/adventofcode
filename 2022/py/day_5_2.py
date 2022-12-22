@@ -21,6 +21,6 @@ def process_solution(contents):
     return "".join([i[0] for i in crates])
 
 if __name__ == "__main__":
-    contents = common.read_input()
+    contents = common.read_input(data_type = 'struct_list')
     result = process_solution(contents)
     common.print_result(result, 'STHGRZZFR')
