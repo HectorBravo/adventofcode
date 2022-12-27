@@ -6,6 +6,7 @@ import os
 import time
 import shutil
 from colorama import Fore, Back, Style
+import collections
 
 script_name = os.path.basename(sys.argv[0])
 dir_name = os.path.dirname(sys.argv[0])
@@ -106,3 +107,37 @@ def get_neighbour_positions(position:complex, min_x_y:complex, max_x_y:complex, 
                                                             number.imag >= min_x_y.imag and number.imag <= max_x_y.imag,
                                                             neighbours))
     return filtered_neigbours
+
+def draw_path(array, path, fill_sequence):
+    i = 0
+    for position in path:
+        array[int(position.imag)][int(position.real)] = fill_sequence[i]
+        i  = ((i + 1) % len(fill_sequence))
+    for line in array:
+        print("".join(line))
+
+def find_all_paths(graph, start, end, current_path = []):
+    current_path += [start]
+    if start == end:
+        return [current_path]
+    if start not in graph:
+        return []
+    path_list = []
+    for node in graph[start]:
+        if node not in current_path:
+            newpaths = find_all_paths(graph, node, end, current_path)
+            for newpath in newpaths:
+                path_list.append(newpath)
+    return path_list
+
+# Breadth first implementation
+def find_shortest_path_BFS(graph, start, end):
+    dist = {start: [start]}
+    q = collections.deque([start])
+    while len(q):
+        at = q.popleft()
+        for next in graph[at]:
+            if next not in dist:
+                dist[next] = dist[at]+[next]
+                q.append(next)
+    return dist.get(end)
