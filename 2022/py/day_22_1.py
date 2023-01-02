@@ -1,5 +1,5 @@
 # Copyright Hector Bravo <hbravo@cuic.net>
-# Code for Day 22 excercise 1 https://adventofcode.com/2022/day/21
+# Code for Day 22 excercise 1 https://adventofcode.com/2022/day/22
 
 
 import adv_common as common
