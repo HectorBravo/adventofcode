@@ -2,23 +2,8 @@
 # Code for Day 9 excercise 1 https://adventofcode.com/2022/day/9
 
 import adv_common as common
-import numpy as np
 
 NUM_SEGMENTS = 2
-
-def draw_positions(positions):
-    max_x = max(set(int(position.real) for position in positions))
-    min_x = min(set(int(position.real) for position in positions))
-    max_y = max(set(int(position.imag) for position in positions))
-    min_y = min(set(int(position.imag) for position in positions))
-    # print(max_x, min_x, max_y, min_y)
-    # print(positions)
-    array = np.full((max_y - min_y + 1, max_x - min_x + 1), '.')
-    for position in positions:
-        array[abs(max_y) - int(position.imag)][abs(min_x) + int(position.real)] = '#'
-    # print(array)
-    for i in range(max_y - min_y + 1):
-        print("".join(array[i]))
 
 def print_move(current, next, i):
     if current != next:
@@ -59,14 +44,14 @@ def gen_positions(contents, num_segments):
                     next_segments[i] = segments[i]
                 # print_move(segments[i], next_segments[i], i)
             segments = next_segments[:]
-        # day_9_1.draw_positions(tail_positions)
+        # common.draw_positions(tail_positions)
     return tail_positions
 
 @common.elapsed_time_factory()
 def process_solution(contents):
     # print('Contents:', contents)
     positions = gen_positions(contents, NUM_SEGMENTS)
-    # draw_positions(positions)
+    # common.draw_positions(positions)
     return len(positions)
 
 if __name__ == "__main__":

@@ -10,7 +10,7 @@ NUM_SEGMENTS = 10
 def process_solution(contents):
     # print('Contents:', contents)
     positions = day_9_1.gen_positions(contents, NUM_SEGMENTS)
-    # day_9_1.draw_positions(positions)
+    # common.draw_positions(positions)
     return len(positions)
 
 if __name__ == "__main__":
