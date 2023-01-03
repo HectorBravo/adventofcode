@@ -11,6 +11,6 @@ setup(
 	description='Common code for https://adventofcode.com',
 	long_description=open('README.md').read(),
 	long_description_content_type='text/markdown',
-	install_requires=['colorama', 'sympy'],
+	install_requires=['colorama', 'sympy', 'numpy'],
 	python_requires='>=3'
 )

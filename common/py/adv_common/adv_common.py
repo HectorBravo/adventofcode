@@ -7,6 +7,7 @@ import time
 import shutil
 from colorama import Fore, Back, Style
 import collections
+import numpy as np
 
 script_name = os.path.basename(sys.argv[0])
 dir_name = os.path.dirname(sys.argv[0])
@@ -141,3 +142,17 @@ def find_shortest_path_BFS(graph, start, end):
                 dist[next] = dist[at]+[next]
                 q.append(next)
     return dist.get(end)
+
+def draw_positions(positions, fill_char = '#', empty_char = '.'):
+    max_x = max(set(int(position.real) for position in positions))
+    min_x = min(set(int(position.real) for position in positions))
+    max_y = max(set(int(position.imag) for position in positions))
+    min_y = min(set(int(position.imag) for position in positions))
+    # print(max_x, min_x, max_y, min_y)
+    # print(positions)
+    array = np.full((max_y - min_y + 1, max_x - min_x + 1), empty_char)
+    for position in positions:
+        array[abs(min_y) + int(position.imag)][abs(min_x) + int(position.real)] = fill_char
+    # print(array)
+    for i in range(max_y - min_y + 1):
+        print("".join(array[i]))
