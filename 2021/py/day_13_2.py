@@ -23,6 +23,6 @@ def process_solution(contents):
     return get_dot_number(dots, folds)
 
 if __name__ == "__main__":
-    contents = common.read_input("struct_list")
+    contents = common.read_input(data_type = "struct_list")
     result = process_solution(contents)
     common.print_result(result, 'CJCKBAPB')
