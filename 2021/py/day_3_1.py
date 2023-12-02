@@ -5,7 +5,7 @@ import adv_common as common
 
 def calc_gamma(zeroes, ones):
     value = ''
-    for i in range(len(zeroes)):
+    for i, _ in enumerate(zeroes):
         if zeroes[i] > ones[i]:
             value += '0'
         else:
@@ -14,7 +14,7 @@ def calc_gamma(zeroes, ones):
 
 def calc_epsilon(zeroes, ones):
     value = ''
-    for i in range(len(zeroes)):
+    for i, _ in enumerate(zeroes):
         if zeroes[i] > ones[i]:
             value += '1'
         else:
@@ -22,12 +22,12 @@ def calc_epsilon(zeroes, ones):
     return int(value, 2)
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print(contents)
-    zeroes = [0] * len(contents[0])
-    ones = [0] * len(contents[0])
-    for position in contents:
-        for bit in range(len(position)):
+def process_contents(_contents):
+    # print(_contents)
+    zeroes = [0] * len(_contents[0])
+    ones = [0] * len(_contents[0])
+    for position in _contents:
+        for bit, _ in enumerate(position):
             if position[bit] == '0':
                 zeroes[bit] += 1
             elif position[bit] == '1':
@@ -35,21 +35,19 @@ def process_contents(contents):
 
     gamma = calc_gamma(zeroes, ones)
     epsilon = calc_epsilon(zeroes, ones)
-    result = gamma * epsilon
-    return result
+    return gamma * epsilon
 
 @common.elapsed_time_factory()
-def process_contents2(contents):
-    # print(contents)
+def process_contents2(_contents):
+    # print(_contents)
     gamma = []
     epsilon = []
-    for bit in range(len(contents[0])):
-        ones = len([i[bit] for i in contents if i[bit] == '1'])
-        zeroes = len([i[bit] for i in contents if i[bit] == '0'])
+    for bit in range(len(_contents[0])):
+        ones = len([i[bit] for i in _contents if i[bit] == '1'])
+        zeroes = len([i[bit] for i in _contents if i[bit] == '0'])
         gamma += ['1' if ones > zeroes else '0']
         epsilon += ['0' if ones > zeroes else '1']
-    result = int("".join(gamma), 2) * int("".join(epsilon), 2)
-    return result
+    return int("".join(gamma), 2) * int("".join(epsilon), 2)
 
 if __name__ == "__main__":
     contents = common.read_input()

@@ -4,9 +4,9 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    positions = [int(c.split()[-1]) for c in contents]
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    positions = [int(c.split()[-1]) for c in _contents]
     scores = [0, 0]
     rolls = 0
     player = 0

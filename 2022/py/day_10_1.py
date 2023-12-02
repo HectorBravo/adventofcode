@@ -4,12 +4,12 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
     signal_strenght = 0
     cycles = 0
     register_x = 1
-    for instruction in contents:
+    for instruction in _contents:
         cycles += 1
         if cycles == 20 or ((cycles - 20) % 40 == 0):
             signal_strenght += (cycles*register_x)

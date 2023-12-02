@@ -10,9 +10,9 @@ outcome_score = {   ('B X'): 0, ('C Y'): 0, ('A Z'): 0,
 
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    count = sum(shape_score[pair.split()[1]] + outcome_score[pair] for pair in contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    count = sum(shape_score[pair.split()[1]] + outcome_score[pair] for pair in _contents)
     return count
 
 if __name__ == "__main__":

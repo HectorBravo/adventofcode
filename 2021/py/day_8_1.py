@@ -4,10 +4,10 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
     number_list =[]
-    for line in contents:
+    for line in _contents:
         _, right = line.split('|')
         number_list += list(filter(lambda x : len(x) == 2 or len(x) == 3 or len(x) == 4 or len(x) == 7, right.split()))
     return len(number_list)

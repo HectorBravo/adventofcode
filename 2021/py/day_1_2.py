@@ -4,21 +4,21 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print(contents)
-    result = 0
-    previous_sum = sum(contents[0:3])
-    for i in range(1, len(contents)-2):
-        current_sum = sum(contents[i:i+3])
+def process_contents(_contents):
+    # print(_contents)
+    _result = 0
+    previous_sum = sum(_contents[0:3])
+    for i in range(1, len(_contents)-2):
+        current_sum = sum(_contents[i:i+3])
         if current_sum > previous_sum:
-            result += 1
+            _result += 1
         previous_sum = current_sum
-    return result
+    return _result
 
 @common.elapsed_time_factory()
-def process_contents2(contents):
-    # print(contents)
-    return len([contents[i:i+4] for i in range(0, len(contents) - 1) if sum(contents[i+1:i+4]) > sum(contents[i:i+3])])
+def process_contents2(_contents):
+    # print(_contents)
+    return len([_contents[i:i+4] for i in range(0, len(_contents) - 1) if sum(_contents[i+1:i+4]) > sum(_contents[i:i+3])])
 
 if __name__ == "__main__":
     contents = common.read_input(data_type = 'int')

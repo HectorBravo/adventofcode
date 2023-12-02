@@ -4,25 +4,25 @@
 
 import adv_common as common
 
-def generate_monkey_dict(contents):
+def generate_monkey_dict(_contents):
     monkey_dict = {}
-    for line in contents:
+    for line in _contents:
         monkey_dict[line.split(':')[0]] = line.split(':')[1].lstrip()
     return monkey_dict
 
-def get_monkey_expr(monkey, monkey_dict):
-    if monkey_dict[monkey].isnumeric():
-        return monkey_dict[monkey]
+def get_monkey_expr(_monkey, _monkey_dict):
+    if _monkey_dict[_monkey].isnumeric():
+        return _monkey_dict[_monkey]
     else:
-        monkey1, operation, monkey2 = monkey_dict[monkey].split()
-        monkey_dict[monkey1] = get_monkey_expr(monkey1, monkey_dict)
-        monkey_dict[monkey2] = get_monkey_expr(monkey2, monkey_dict)
-        return '(' + monkey_dict[monkey1] + operation + monkey_dict[monkey2] + ')'
+        monkey1, operation, monkey2 = _monkey_dict[_monkey].split()
+        _monkey_dict[monkey1] = get_monkey_expr(monkey1, _monkey_dict)
+        _monkey_dict[monkey2] = get_monkey_expr(monkey2, _monkey_dict)
+        return '(' + _monkey_dict[monkey1] + operation + _monkey_dict[monkey2] + ')'
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    monkey_dict = generate_monkey_dict(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    monkey_dict = generate_monkey_dict(_contents)
     return int(eval(get_monkey_expr('root', monkey_dict)))
 
 if __name__ == "__main__":

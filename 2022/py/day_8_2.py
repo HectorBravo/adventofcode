@@ -5,9 +5,9 @@ import adv_common as common
 import numpy as np
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    tree_matrix = np.array(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    tree_matrix = np.array(_contents)
     # print(tree_matrix)
     max_scenic_score = 0
     for x in range(0, len(tree_matrix[0]) - 1):

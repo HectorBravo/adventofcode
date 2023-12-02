@@ -3,13 +3,13 @@
 
 import adv_common as common
 
-def get_decoded_number(decoded_numbers, number):
-    return list(decoded_numbers.keys())[list(decoded_numbers.values()).index(number)]
+def get_decoded_number(_decoded_numbers, _number):
+    return list(_decoded_numbers.keys())[list(_decoded_numbers.values()).index(_number)]
 
-def get_decoded_sum(contents):
-    # print('Contents:', contents)
-    result = 0
-    for line in contents:
+def get_decoded_sum(_contents):
+    # print('Contents:', _contents)
+    _result = 0
+    for line in _contents:
         left, right = line.split('|')
         encoded_numbers = list([frozenset(a) for a in list(num for num in (left + right).split())])
         known_numbers = {}
@@ -54,14 +54,14 @@ def get_decoded_sum(contents):
         # print(segments)
         i = 1
         for number in encoded_numbers[:-5:-1]:
-            result += (get_decoded_number(known_numbers, number) * i)
+            _result += (get_decoded_number(known_numbers, number) * i)
             i *= 10
-    return result
+    return _result
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    return get_decoded_sum(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    return get_decoded_sum(_contents)
 
 if __name__ == "__main__":
     contents = common.read_input()

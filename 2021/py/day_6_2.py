@@ -7,9 +7,9 @@ import day_6_1
 DAYS_TO_SIMULATE = 256
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    return day_6_1.calc_len_after_days_optimal(contents, DAYS_TO_SIMULATE)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    return day_6_1.calc_len_after_days_optimal(_contents, DAYS_TO_SIMULATE)
 
 if __name__ == "__main__":
     contents = common.read_input(data_type = 'int_list', separator = ',')

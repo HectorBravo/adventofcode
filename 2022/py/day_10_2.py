@@ -8,20 +8,20 @@ CRT_COLS = 40
 CRT_ROWS = 6
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
     cycles = 0
     register_x = 1
     crt_string = ''
-    for instruction in contents:
-        if (cycles % CRT_COLS) in range(register_x - 1, register_x + 2):
+    for instruction in _contents:
+        if cycles % CRT_COLS in range(register_x - 1, register_x + 2):
             crt_string += '#'
         else:
             crt_string += ' '
         # print(crt_string)
         cycles += 1
         if instruction != 'noop':
-            if (cycles % CRT_COLS) in range(register_x - 1, register_x + 2):
+            if cycles % CRT_COLS in range(register_x - 1, register_x + 2):
                 crt_string += '#'
             else:
                 crt_string += ' '

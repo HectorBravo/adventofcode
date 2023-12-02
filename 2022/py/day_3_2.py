@@ -5,10 +5,10 @@ import adv_common as common
 import day_3_1
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    groups = [contents[i:i+3] for i in range(0, len(contents), 3)]
-    prio_sum = sum([day_3_1.get_prio(''.join(set(group[0]).intersection(group[1]).intersection(group[2]))) for group in groups])
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    groups = [_contents[i:i+3] for i in range(0, len(_contents), 3)]
+    prio_sum = sum(day_3_1.get_prio(''.join(set(group[0]).intersection(group[1]).intersection(group[2]))) for group in groups)
     # prio_sum = 0
     # for group in groups:
     #     print(group)

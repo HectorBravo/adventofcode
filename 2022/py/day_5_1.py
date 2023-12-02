@@ -3,13 +3,13 @@
 
 import adv_common as common
 
-def split_input(input):
-    crate_list, direction_list = input
+def split_input(_input):
+    crate_list, direction_list = _input
     directions = []
     crates = [[] for _ in range(len(crate_list[0]) // 4 + 1)]
 
     for direction in direction_list:
-        directions += [tuple([int(x) for x in direction.split(' ') if x.lstrip("-").isnumeric()])]
+        directions += [tuple(int(x) for x in direction.split(' ') if x.lstrip("-").isnumeric())]
     for crate in crate_list:
         for i in range(len(crate) // 4 + 1):
             if crate[4*i+1: 4*i+2] != ' ':
@@ -21,9 +21,9 @@ def move_elems(elems, src_crate, dst_crate):
         dst_crate.insert(0, src_crate.pop(0))
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    crates, directions = split_input(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    crates, directions = split_input(_contents)
     # print('crates:\n', crates)
     # print('directions:\n', directions)
     for elems, src_crate, dst_crate in directions:

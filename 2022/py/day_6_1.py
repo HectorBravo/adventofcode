@@ -3,17 +3,17 @@
 
 import adv_common as common
 
-def get_first_diff_sequence(input, characters):
-    for i in range(len(input)):
-        if len(set(input[i:i+characters])) == characters:
+def get_first_diff_sequence(_input, _characters):
+    for i in range(len(_input)):
+        if len(set(_input[i:i+_characters])) == _characters:
             break
-    return i + characters
+    return i + _characters
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
     characters = 4
-    return get_first_diff_sequence(contents[0], characters)
+    return get_first_diff_sequence(_contents[0], characters)
 
 if __name__ == "__main__":
     contents = common.read_input()

@@ -5,11 +5,11 @@ import adv_common as common
 import re
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print(contents)
+def process_contents(_contents):
+    # print(_contents)
 
     number = 0
-    for content in contents:
+    for content in _contents:
         lower, higher, letter, password = re.fullmatch(r'(\d+)-(\d+) (.): (\w+)', content).groups()
         lower, higher = int(lower), int(higher)
         # print(lower, higher, letter, password, password[lower-1] == letter, password[higher-1] == letter)

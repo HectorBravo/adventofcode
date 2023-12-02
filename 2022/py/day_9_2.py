@@ -7,9 +7,9 @@ import day_9_1
 NUM_SEGMENTS = 10
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    positions = day_9_1.gen_positions(contents, NUM_SEGMENTS)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    positions = day_9_1.gen_positions(_contents, NUM_SEGMENTS)
     # common.draw_positions(positions)
     return len(positions)
 

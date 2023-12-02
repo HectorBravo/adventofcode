@@ -4,21 +4,21 @@
 
 import adv_common as common
 
-def get_dot_number(dots, folds):
-    for coord, fold_str in folds:
+def get_dot_number(_dots, _folds):
+    for coord, fold_str in _folds:
         fold = int(fold_str)
-        for i, dot in enumerate(dots):
+        for i, dot in enumerate(_dots):
             if coord == 'y' and dot.imag > fold:
-                dots[i] = dot.real + (fold - (dot.imag - fold))*1j
+                _dots[i] = dot.real + (fold - (dot.imag - fold))*1j
             elif coord == 'x' and dot.real > fold:
-                dots[i] = fold - (dot.real - fold) + dot.imag*1j
-    return len(set(dots))
+                _dots[i] = fold - (dot.real - fold) + dot.imag*1j
+    return len(set(_dots))
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    dots = [int(line.split(',')[0]) + int(line.split(',')[1])*1j for line in contents[0]]
-    folds = [tuple(line.split()[-1].split('=')) for line in contents[1]]
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    dots = [int(line.split(',')[0]) + int(line.split(',')[1])*1j for line in _contents[0]]
+    folds = [tuple(line.split()[-1].split('=')) for line in _contents[1]]
     return get_dot_number(dots, [folds[0]])
 
 if __name__ == "__main__":

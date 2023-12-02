@@ -6,22 +6,21 @@ import adv_common as common
 import day_21_1
 from sympy import solve
 
-def get_monkey_expr(monkey, monkey_dict):
-    if monkey_dict[monkey].isnumeric():
-        return monkey if monkey == 'humn' else monkey_dict[monkey]
-    else:
-        monkey1, operation, monkey2 = monkey_dict[monkey].split()
-        monkey_dict[monkey1] = get_monkey_expr(monkey1, monkey_dict)
-        monkey_dict[monkey2] = get_monkey_expr(monkey2, monkey_dict)
-        if monkey == 'root':
-            # Assume root operation will always be sum
-            operation = '-'
-        return '(' + monkey_dict[monkey1] + operation + monkey_dict[monkey2] + ')'
+def get_monkey_expr(_monkey, _monkey_dict):
+    if _monkey_dict[_monkey].isnumeric():
+        return _monkey if _monkey == 'humn' else _monkey_dict[_monkey]
+    monkey1, operation, monkey2 = _monkey_dict[_monkey].split()
+    _monkey_dict[monkey1] = get_monkey_expr(monkey1, _monkey_dict)
+    _monkey_dict[monkey2] = get_monkey_expr(monkey2, _monkey_dict)
+    if _monkey == 'root':
+        # Assume root operation will always be sum
+        operation = '-'
+    return '(' + _monkey_dict[monkey1] + operation + _monkey_dict[monkey2] + ')'
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    monkey_dict = day_21_1.generate_monkey_dict(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    monkey_dict = day_21_1.generate_monkey_dict(_contents)
     return solve(get_monkey_expr('root', monkey_dict))[0]
 
 if __name__ == "__main__":

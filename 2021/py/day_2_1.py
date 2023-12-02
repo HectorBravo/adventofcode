@@ -4,12 +4,12 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print(contents)
-    result = 0
+def process_contents(_contents):
+    # print(_contents)
+    _result = 0
     x = 0
     y = 0
-    for pair in contents:
+    for pair in _contents:
         direction, value = pair.split()
         value = int(value)
         if direction == 'forward':
@@ -18,8 +18,8 @@ def process_contents(contents):
             y += value
         elif direction == 'up':
             y -= value
-    result = x * y
-    return result
+    _result = x * y
+    return _result
 
 if __name__ == "__main__":
     contents = common.read_input()

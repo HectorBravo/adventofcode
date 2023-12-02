@@ -5,12 +5,12 @@ import adv_common as common
 import day_4_1 as day_4_1
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print('Contents:', contents)
-    winning_combination = contents[0]
+def process_contents(_contents):
+    # print('Contents:', _contents)
+    winning_combination = _contents[0]
 
-    number_of_boards = (len(contents) - 1) // (day_4_1.BOARD_ROWS + 1)
-    boards = day_4_1.gen_bingo_boards(contents, number_of_boards)
+    number_of_boards = (len(_contents) - 1) // (day_4_1.BOARD_ROWS + 1)
+    boards = day_4_1.gen_bingo_boards(_contents, number_of_boards)
 
     number_list = winning_combination.split(',')
     for number in number_list:
@@ -20,10 +20,9 @@ def process_contents(contents):
         if winner_board:
             # day_4_1.print_board(winner_board)
             # print('board len:', len(boards))
-            if (len(boards) == 1) or (number == number_list[-1]):
+            if len(boards) == 1 or number == number_list[-1]:
                 print('winner board is')
                 day_4_1.print_board(winner_board)
-                break
             else:
                 print('removing board:')
                 day_4_1.print_board(winner_board)
@@ -31,9 +30,10 @@ def process_contents(contents):
         else:
             print('no winner board')
 
-    if winner_board != None:
+    if winner_board is not None:
         unmarked_sum = day_4_1.get_sum_of_unmarked_nums(winner_board)
     print('unmarked:', unmarked_sum, 'number:', number)
+    return unmarked_sum * int(number)
     result = unmarked_sum * int(number)
     return result
 

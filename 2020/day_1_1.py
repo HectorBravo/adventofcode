@@ -4,9 +4,9 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print(contents)
-    numbers = list(filter(lambda x: 2020-x in contents, contents))
+def process_contents(_contents):
+    # print(_contents)
+    numbers = list(filter(lambda x: 2020-x in _contents, _contents))
     return numbers[0]*numbers[1]
 
 if __name__ == "__main__":

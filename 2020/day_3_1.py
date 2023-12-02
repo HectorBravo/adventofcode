@@ -4,9 +4,9 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print(contents)
-    return len(list(filter(lambda x: x == '#', [contents[i][(3*i) % len(contents[0])] for i in range(1, len(contents))])))
+def process_contents(_contents):
+    # print(_contents)
+    return len(list(filter(lambda x: x == '#', [_contents[i][(3*i) % len(_contents[0])] for i in range(1, len(_contents))])))
 
 if __name__ == "__main__":
     contents = common.read_input('char_list')

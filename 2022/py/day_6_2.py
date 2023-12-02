@@ -5,10 +5,10 @@ import adv_common as common
 import day_6_1
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
     characters = 14
-    return day_6_1.get_first_diff_sequence(contents[0], characters)
+    return day_6_1.get_first_diff_sequence(_contents[0], characters)
 
 if __name__ == "__main__":
     contents = common.read_input()

@@ -5,9 +5,9 @@ import adv_common as common
 import numpy as np
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    tree_matrix = np.array(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    tree_matrix = np.array(_contents)
     # print(tree_matrix)
     count = (len(tree_matrix) * 2) + (len(tree_matrix[0]) - 2) * 2
     for x in range(1, len(tree_matrix[0]) - 1):

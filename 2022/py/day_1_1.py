@@ -4,9 +4,9 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    return max([sum([int(content) for content in contents[i]]) for i in range(len(contents))])
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    return max(sum(int(content) for content in _contents[i]) for i in range(len(_contents)))
 
 if __name__ == "__main__":
     # contents = common.read_input()

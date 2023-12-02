@@ -5,11 +5,11 @@ import adv_common as common
 import re
 
 @common.elapsed_time_factory()
-def process_contents(contents):
-    # print(contents)
+def process_contents(_contents):
+    # print(_contents)
 
     number = 0
-    for content in contents:
+    for content in _contents:
         minimum, maximum, letter, password = re.fullmatch(r'(\d+)-(\d+) (.): (\w+)', content).groups()
         minimum, maximum = int(minimum), int(maximum)
         # print(minimum, maximum, letter, password, password.count(letter))

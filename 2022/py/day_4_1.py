@@ -4,9 +4,9 @@
 import adv_common as common
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    pairs = [pair.split(',') for pair in contents]
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    pairs = [pair.split(',') for pair in _contents]
     count = 0
     for pair in pairs:
         pair1 = list(map(int, pair[0].split('-')))

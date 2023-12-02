@@ -7,23 +7,23 @@ import day_11_1
 
 ROUNDS = 10000
 
-def process_rounds(monkeys, lcm, rounds):
-    for round in range(rounds):
-        for id, monkey in enumerate(monkeys):
+def process_rounds(_monkeys, _lcm, _rounds):
+    for _round in range(_rounds):
+        for _id, monkey in enumerate(_monkeys):
             for old in monkey['items']:
-                new_value = eval(monkey['operation']) % lcm
+                new_value = eval(monkey['operation']) % _lcm
                 if new_value % monkey['test'] == 0:
-                    monkeys[monkey['true']]['items'].append(new_value)
+                    _monkeys[monkey['true']]['items'].append(new_value)
                 else:
-                    monkeys[monkey['false']]['items'].append(new_value)
-                monkeys[id]['inspected'] += 1
-            monkeys[id]['items'] = []
-        # day_11_1.print_worry_levels_and_inspections(round, monkeys)
+                    _monkeys[monkey['false']]['items'].append(new_value)
+                _monkeys[_id]['inspected'] += 1
+            _monkeys[_id]['items'] = []
+        # day_11_1.print_worry_levels_and_inspections(_round, _monkeys)
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    monkeys = day_11_1.get_monkey_dict(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    monkeys = day_11_1.get_monkey_dict(_contents)
     lcm = 1
     for monkey in monkeys:
         lcm *= monkey['test']

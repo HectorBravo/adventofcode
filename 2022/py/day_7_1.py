@@ -5,16 +5,16 @@ import adv_common as common
 
 NEEDED_SPACE = 100000
 
-def update_directory_recursively(dict, dir, value):
-    # print(dict)
-    if dir != []:
-        dict['/'.join(dir)] += value
-        update_directory_recursively(dict, dir[:-1], value)
+def update_directory_recursively(_dict, _dir, value):
+    # print(_dict)
+    if _dir != []:
+        _dict['/'.join(_dir)] += value
+        update_directory_recursively(_dict, _dir[:-1], value)
 
-def gen_directory_tree(input):
+def gen_directory_tree(_input):
     directory_tree = {'.': 0}
     current_dir = []
-    for command_line in input:
+    for command_line in _input:
         command = command_line.split(' ')
         match command[0]:
             case '$':
@@ -31,17 +31,16 @@ def gen_directory_tree(input):
                         pass
             case 'dir':
                 directory_tree['/'.join(current_dir + [command[1]])] = 0
-                pass
             case _:
                 update_directory_recursively(directory_tree, current_dir, int(command[0]))
     return directory_tree
 
 @common.elapsed_time_factory()
-def process_solution(contents):
-    # print('Contents:', contents)
-    directory_tree = gen_directory_tree(contents)
+def process_solution(_contents):
+    # print('Contents:', _contents)
+    directory_tree = gen_directory_tree(_contents)
     # print(directory_tree)
-    return sum([v for _, v in directory_tree.items() if v < NEEDED_SPACE])
+    return sum(v for _, v in directory_tree.items() if v < NEEDED_SPACE)
 
 if __name__ == "__main__":
     contents = common.read_input()
