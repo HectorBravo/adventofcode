@@ -5,8 +5,8 @@ import sys
 import os
 import time
 import shutil
-from colorama import Fore, Back, Style
 import collections
+from colorama import Fore, Back, Style
 import numpy as np
 
 script_name = os.path.basename(sys.argv[0])
@@ -15,7 +15,7 @@ input_file = script_name.split('.')[0][:-2] + '_input.txt'
 
 def read_input(data_type = 'str', separator = '\n', struct_list_separator = '\n\n'):
     print(Fore.GREEN + 'Input file:' + Style.BRIGHT, input_file, Style.RESET_ALL)
-    with open(dir_name + '\\' + input_file, "r") as f:
+    with open(dir_name + '\\' + input_file, "r", encoding="utf-8") as f:
         if data_type == 'int':
             contents = list(map(int, f))
         elif data_type == 'int_list':
@@ -31,8 +31,8 @@ def read_input(data_type = 'str', separator = '\n', struct_list_separator = '\n\
     return tuple(contents)
 
 def gen_next_files():
-    script_name = os.path.basename(sys.argv[0])
-    current_file = script_name.split('.')[0].split('_')
+    current_script_name = os.path.basename(sys.argv[0])
+    current_file = current_script_name.split('.')[0].split('_')
     new_day_file = [*current_file]
     new_input_file = []
     if current_file[2] == '2':
@@ -45,27 +45,27 @@ def gen_next_files():
     new_input_file = '_'.join(new_input_file)
     if not os.path.exists(dir_name + '\\' + new_day_file):
         print(Fore.RED + 'Created new day file' + Style.BRIGHT, dir_name + '\\' + new_day_file, Style.RESET_ALL)
-        shutil.copy(dir_name + '\\' + script_name, dir_name + '\\' + new_day_file)
+        shutil.copy(dir_name + '\\' + current_script_name, dir_name + '\\' + new_day_file)
     if new_input_file and (not os.path.exists(dir_name + '\\' + new_input_file)):
         print(Fore.RED + 'Created new input file' + Style.BRIGHT, dir_name + '\\' + new_input_file, Style.RESET_ALL)
-        with open(dir_name + '\\' + new_input_file, 'w') as f:
+        with open(dir_name + '\\' + new_input_file, 'w', encoding="utf-8") as f:
             pass
 
-def print_result(result, expected_result = None):
-    print(Fore.GREEN + 'Result is:' + Style.BRIGHT, result, Style.RESET_ALL)
-    if expected_result:
-        assert(result == expected_result)
+def print_result(_result, _expected_result = None):
+    print(Fore.GREEN + 'Result is:' + Style.BRIGHT, _result, Style.RESET_ALL)
+    if _expected_result:
+        assert _result == _expected_result
         gen_next_files()
 
-def str_list_to_int_lst(str_list):
-    return list(map(int, str_list))
+def str_list_to_int_lst(_str_list):
+    return list(map(int, _str_list))
 
-def gen_point_list(vector):
-    # print('vector:', vector)
-    x0 = vector[0]
-    y0 = vector[1]
-    x1 = vector[2]
-    y1 = vector[3]
+def gen_point_list(_vector):
+    # print('_vector:', _vector)
+    x0 = _vector[0]
+    y0 = _vector[1]
+    x1 = _vector[2]
+    y1 = _vector[3]
 
     direction_x = 0
     direction_y = 0
@@ -86,13 +86,13 @@ def gen_point_list(vector):
     point_list = [(x0 + step * direction_x, y0 + step *direction_y) for step in range(num_steps)]
     return tuple(point_list)
 
-def elapsed_time_factory(print_args = False):
+def elapsed_time_factory(_print_args = False):
     def elapsed_time_decorator(func):
         def wrapper(*args, **kwargs):
             start_time = time.time()
             result = func(*args, **kwargs)
             end_time = time.time()
-            if print_args:
+            if _print_args:
                 print('Time consumed by function ' + Fore.CYAN + func.__name__ + ' (' + Fore.WHITE + str(args) + Fore.CYAN + ')' + Style.RESET_ALL + ' was ' + Style.BRIGHT + str(end_time - start_time) + Style.RESET_ALL + ' seconds')
             else:
                 print('Time consumed by function ' + Fore.CYAN + func.__name__ + Style.RESET_ALL + ' was ' + Style.BRIGHT + str(end_time - start_time) + Style.RESET_ALL + ' seconds')
@@ -100,59 +100,59 @@ def elapsed_time_factory(print_args = False):
         return wrapper
     return elapsed_time_decorator
 
-def get_neighbour_positions(position:complex, min_x_y:complex, max_x_y:complex, include_diagonals = False):
-    neighbours = {position + 1, position -1, position +1j, position -1j}
-    if include_diagonals:
-        neighbours |= {position + (1+1j), position + (-1+1j), position + (1-1j), position + (-1-1j)}
-    filtered_neigbours = set(filter(lambda number: number.real >= min_x_y.real and number.real <= max_x_y.real and
-                                                            number.imag >= min_x_y.imag and number.imag <= max_x_y.imag,
+def get_neighbour_positions(_position:complex, _min_x_y:complex, _max_x_y:complex, _include_diagonals = False):
+    neighbours = {_position + 1, _position -1, _position +1j, _position -1j}
+    if _include_diagonals:
+        neighbours |= {_position + (1+1j), _position + (-1+1j), _position + (1-1j), _position + (-1-1j)}
+    filtered_neigbours = set(filter(lambda number: number.real >= _min_x_y.real and number.real <= _max_x_y.real and
+                                                            number.imag >= _min_x_y.imag and number.imag <= _max_x_y.imag,
                                                             neighbours))
     return filtered_neigbours
 
-def draw_path(array, path, fill_sequence):
+def draw_path(_array, _path, _fill_sequence):
     i = 0
-    for position in path:
-        array[int(position.imag)][int(position.real)] = fill_sequence[i]
-        i  = ((i + 1) % len(fill_sequence))
-    for line in array:
+    for position in _path:
+        _array[int(position.imag)][int(position.real)] = _fill_sequence[i]
+        i  = (i + 1) % len(_fill_sequence)
+    for line in _array:
         print("".join(line))
 
-def find_all_paths(graph, start, end, current_path = []):
-    current_path += [start]
-    if start == end:
-        return [current_path]
-    if start not in graph:
+def find_all_paths(_graph, _start, _end, _current_path):
+    _current_path += [_start]
+    if _start == _end:
+        return [_current_path]
+    if _start not in _graph:
         return []
     path_list = []
-    for node in graph[start]:
-        if node not in current_path:
-            newpaths = find_all_paths(graph, node, end, current_path)
+    for node in _graph[_start]:
+        if node not in _current_path:
+            newpaths = find_all_paths(_graph, node, _end, _current_path)
             for newpath in newpaths:
                 path_list.append(newpath)
     return path_list
 
 # Breadth first implementation
-def find_shortest_path_BFS(graph, start, end):
-    dist = {start: [start]}
-    q = collections.deque([start])
+def find_shortest_path_bfs(_graph, _start, _end):
+    dist = {_start: [_start]}
+    q = collections.deque([_start])
     while len(q):
         at = q.popleft()
-        for next in graph[at]:
-            if next not in dist:
-                dist[next] = dist[at]+[next]
-                q.append(next)
-    return dist.get(end)
+        for next_graph in _graph[at]:
+            if next_graph not in dist:
+                dist[next_graph] = dist[at]+[next_graph]
+                q.append(next_graph)
+    return dist.get(_end)
 
-def draw_positions(positions, fill_char = '#', empty_char = '.'):
-    max_x = max(set(int(position.real) for position in positions))
-    min_x = min(set(int(position.real) for position in positions))
-    max_y = max(set(int(position.imag) for position in positions))
-    min_y = min(set(int(position.imag) for position in positions))
+def draw_positions(_positions, _fill_char = '#', _empty_char = '.'):
+    max_x = max(set(int(position.real) for position in _positions))
+    min_x = min(set(int(position.real) for position in _positions))
+    max_y = max(set(int(position.imag) for position in _positions))
+    min_y = min(set(int(position.imag) for position in _positions))
     # print(max_x, min_x, max_y, min_y)
-    # print(positions)
-    array = np.full((max_y - min_y + 1, max_x - min_x + 1), empty_char)
-    for position in positions:
-        array[abs(min_y) + int(position.imag)][abs(min_x) + int(position.real)] = fill_char
+    # print(_positions)
+    array = np.full((max_y - min_y + 1, max_x - min_x + 1), _empty_char)
+    for position in _positions:
+        array[abs(min_y) + int(position.imag)][abs(min_x) + int(position.real)] = _fill_char
     # print(array)
     for i in range(max_y - min_y + 1):
         print("".join(array[i]))
